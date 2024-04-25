@@ -6,7 +6,7 @@ env:
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
 on:
-  pull-request:
+  pull_request:
     - main
 
 jobs:
