@@ -25,7 +25,7 @@ jobs:
         run: npm run lint
 
   Deploy-Preview:
-    with: Check
+    needs: Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
