@@ -6,9 +6,8 @@ env:
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
 on:
-  push:
-    branches-ignore:
-      - main
+  pull-request:
+    - main
 
 jobs:
   Check:
@@ -41,6 +40,7 @@ jobs:
 
   PR-Comment:
     needs: Deploy-Preview
+    runs-on: ubuntu-latest
     steps:
       - run: sleep 30
       - name: vercel-preview-url
