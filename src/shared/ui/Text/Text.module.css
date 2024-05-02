@@ -1,0 +1,44 @@
+.base {
+  color: var(--primary-color);
+}
+
+.block {
+  display: block;
+}
+
+.size-s {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.size-m {
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.size-l {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.size-xl {
+  font-size: 22px;
+  line-height: 26px;
+}
+
+.size-xxl {
+  font-size: 26px;
+  line-height: 30px;
+}
+
+.weight-400 {
+  font-weight: 400;
+}
+
+.weight-500 {
+  font-weight: 500;
+}
+
+.weight-600 {
+  font-weight: 600;
+}

@@ -1,0 +1,1 @@
+export { getValidateText } from './getValidateText';

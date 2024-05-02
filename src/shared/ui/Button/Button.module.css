@@ -1,0 +1,36 @@
+.button {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+
+  color: currentColor;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 1;
+
+  transition: 0.2s all;
+}
+
+.button:hover,
+.button:focus {
+  opacity: 0.6;
+}
+
+.icon {
+  margin-left: 8px;
+}
+
+.outline {
+  border: 1px solid var(--primary-color);
+}
+
+.outline:active {
+  background-color: var(--tetriary-bg-color);
+}
+.outline:hover,
+.outline:focus {
+  opacity: 0.8;
+}
