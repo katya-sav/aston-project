@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin: 32px 16px;
+  padding: 16px;
+  background-color: var(--secondary-bg-color);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  margin-right: 16px;
+}
+
+.icon {
+  margin-top: 16px;
+}
+
+.info {
+  margin-top: 16px;
+}

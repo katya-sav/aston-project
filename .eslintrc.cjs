@@ -12,14 +12,12 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh'],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
-    'no-console': 'error',
+    // 'no-console': 'error',
     curly: 'error',
     'import/prefer-default-export': 'off',
+    'react/react-in-jsx-scope': 'off',
     'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
     'no-unused-expressions': 'error',
+    'no-useless-catch': 'off',
   },
 };
