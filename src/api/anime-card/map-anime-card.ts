@@ -1,4 +1,4 @@
-import { Anime, AnimeRaw } from '../../../types';
+import { Anime, AnimeRaw } from '../../types';
 
 export const mapAnimeCard = (data: AnimeRaw): Anime => ({
   id: data.mal_id,
