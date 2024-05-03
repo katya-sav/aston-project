@@ -1,6 +1,22 @@
 import { mapAnimeCard } from './map-anime-card';
 
-export const getAnimeCard = async (animeId: string) => {
+import { Anime } from '../../types';
+
+type GetCardSuccess = {
+  type: 'success';
+  data: Anime;
+};
+
+type GetCardError = {
+  type: 'error';
+  error: unknown;
+};
+
+type GetCardResponse = GetCardSuccess | GetCardError;
+
+export const getAnimeCard = async (
+  animeId: string | undefined,
+): Promise<GetCardResponse> => {
   try {
     const response = await fetch(`https://api.jikan.moe/v4/anime/${animeId}`, {
       method: 'GET',
@@ -9,10 +25,10 @@ export const getAnimeCard = async (animeId: string) => {
 
     const results = await response.json();
 
-    const res = mapAnimeCard(results.data);
+    const data = mapAnimeCard(results.data);
 
-    return res;
+    return { type: 'success', data };
   } catch (error) {
-    throw error;
+    return { type: 'error', error };
   }
 };

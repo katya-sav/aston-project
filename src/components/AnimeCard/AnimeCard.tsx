@@ -1,21 +1,22 @@
-import { useParams } from 'react-router-dom';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 import { Text, Icon } from '../../shared/ui';
-import { useAnimeCard } from './hooks';
+
 import { getValidateText } from '../../utils';
 
+import { Anime } from '../../types';
 import styles from './AnimeCard.module.css';
 
-export const AnimeCard = () => {
-  const { id } = useParams();
-  const { item } = useAnimeCard(id);
+type Props = {
+  anime: Anime | null;
+};
 
-  if (!item) {
+export const AnimeCard = ({ anime }: Props) => {
+  if (!anime) {
     return null;
   }
 
-  const { title, year, image, synopsis, score, rating, episodes, type } = item;
+  const { title, year, image, synopsis, score, rating, episodes, type } = anime;
 
   return (
     <div className={styles.wrapper}>
