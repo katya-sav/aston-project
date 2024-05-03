@@ -29,3 +29,5 @@ export type AnimeImagesRaw = {
     large_image_url: string | null;
   };
 };
+
+export type FetchingState = 'init' | 'loading' | 'success' | 'failure';

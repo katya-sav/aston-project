@@ -1,4 +1,4 @@
-import { Anime, AnimeRaw } from '../../types';
+import { Anime, AnimeRaw } from '../../../types';
 
 export const mapAnimeList = (data: AnimeRaw[]): Anime[] =>
   data.map((item) => ({

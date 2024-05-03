@@ -1,6 +1,20 @@
 import { mapAnimeList } from './map-anime-list';
 
-export const getAnimeList = async () => {
+import { Anime } from '../../types';
+
+type GetAnimeSuccess = {
+  type: 'success';
+  data: Anime[];
+};
+
+type GetAnimeError = {
+  type: 'error';
+  error: unknown;
+};
+
+type GetAnimeResponse = GetAnimeSuccess | GetAnimeError;
+
+export const getAnimeList = async (): Promise<GetAnimeResponse> => {
   try {
     const response = await fetch('https://api.jikan.moe/v4/anime?limit=10', {
       method: 'GET',
@@ -9,10 +23,10 @@ export const getAnimeList = async () => {
 
     const results = await response.json();
 
-    const res = mapAnimeList(results.data);
+    const data = mapAnimeList(results.data);
 
-    return res;
+    return { type: 'success', data };
   } catch (error) {
-    throw error;
+    return { type: 'error', error };
   }
 };

@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Header } from './components/Header';
 import { MainPage } from './pages/MainPage';
-import { AnimeCard } from './components/AnimeCard';
+import { CardPage } from './pages/CardPage';
 
 import './GlobalStyles.css';
 
@@ -11,7 +11,7 @@ export const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/card/:id" element={<AnimeCard />} />
+        <Route path="/card/:id" element={<CardPage />} />
       </Routes>
     </>
   );
