@@ -1,1 +1,1 @@
-export { getValidateText } from './getValidateText';
+export { getValidateText } from './get-validate-text';

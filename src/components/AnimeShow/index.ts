@@ -1,1 +1,0 @@
-export { AnimeShow } from './AnimeShow';
