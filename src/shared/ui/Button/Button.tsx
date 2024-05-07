@@ -2,10 +2,10 @@ import type { PropsWithChildren } from 'react';
 import cn from 'classnames';
 import type { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 
-import { Icon } from '../Icon';
-import { Text, TextProps } from '../Text';
+import { Icon } from '../icon';
+import { Text, TextProps } from '../text';
 
-import styles from './Button.module.css';
+import styles from './button.module.css';
 
 type Props = PropsWithChildren<
   {

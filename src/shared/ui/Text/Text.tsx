@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import cn from 'classnames';
 
-import styles from './Text.module.css';
+import styles from './text.module.css';
 
 export type Props = PropsWithChildren<{
   size?: 's' | 'm' | 'l' | 'xl' | 'xxl';

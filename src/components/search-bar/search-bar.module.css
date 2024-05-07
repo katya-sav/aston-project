@@ -1,0 +1,34 @@
+.form {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin-right: 16px;
+}
+
+.input {
+  display: flex;
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  outline: none;
+
+  font-size: 20px;
+  color: var(--primary-color);
+  background-color: transparent;
+  transition:
+    0.3s background-color,
+    0.3s color;
+}
+
+.input:focus {
+  background-color: var(--primary-color);
+  color: var(--secondary-bg-color);
+}
+
+.input::placeholder {
+  color: var(--primary-color);
+}
+.input:focus::placeholder {
+  color: var(--secondary-bg-color);
+}

@@ -1,3 +1,3 @@
-export { Text } from './Text';
+export { Text } from './text';
 
-export type { Props as TextProps } from './Text';
+export type { Props as TextProps } from './text';

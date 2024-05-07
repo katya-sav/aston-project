@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  padding: 16px;
+
+  background-color: var(--secondary-bg-color);
+  border-bottom: 1px solid var(--tetriary-bg-color);
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.wrapper:hover {
+  background-color: var(--primary-bg-color);
+}
