@@ -7,7 +7,11 @@ type Props = {
 };
 
 export const ProtectedRoute = ({ page }: Props) => {
-  const { user } = useAuthUser();
+  const { user, userChecked } = useAuthUser();
+
+  if (!userChecked) {
+    return <div>Loading...</div>;
+  }
 
   if (!user) {
     return <Navigate to="/signin" />;

@@ -44,6 +44,10 @@ export const Header = () => {
     navigate(`/signup`, { replace: false });
   }, [navigate]);
 
+  const handleNavigateToFavorites = useCallback(() => {
+    navigate(`/favorites`, { replace: false });
+  }, [navigate]);
+
   return (
     <div className={styles.header}>
       <div className={styles.left}>
@@ -64,7 +68,7 @@ export const Header = () => {
             <Button onClick={signOutUser} icon={faArrowLeft}>
               Logout
             </Button>
-            <Button onClick={() => undefined} icon={faHeart}>
+            <Button onClick={handleNavigateToFavorites} icon={faHeart}>
               Favorites
             </Button>
 

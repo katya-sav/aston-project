@@ -1,8 +1,10 @@
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { useCallback } from 'react';
 
-import { Text, Icon } from '../../shared/ui';
+import { Text } from '../../shared/ui';
+import { FavoritesButton } from '../favorites-button';
 import { getValidateText } from '../../utils';
 import type { Anime } from '../../types';
+import { useFavorites } from '../../hooks';
 
 import styles from './anime-card.module.css';
 
@@ -11,14 +13,32 @@ type Props = {
 };
 
 export const AnimeCard = ({ anime }: Props) => {
-  const { title, year, images, synopsis, score, rating, episodes, type } =
-    anime;
+  const {
+    title,
+    year,
+    images,
+    synopsis,
+    score,
+    rating,
+    episodes,
+    type,
+    malId,
+  } = anime;
+
+  const { isFavorite, toggleFavoritesState } = useFavorites({ malId });
+
+  const handleFavoriteClick = useCallback(() => {
+    toggleFavoritesState(anime);
+  }, [toggleFavoritesState, anime]);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.leftSide}>
         <img src={images.imageUrl ?? undefined} />
-        <Icon icon={faHeart} size="2xl" className={styles.icon} />
+        <FavoritesButton
+          isFavorite={isFavorite}
+          onClick={handleFavoriteClick}
+        />
       </div>
       <div>
         <Text block size="xl" weight={600}>
