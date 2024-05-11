@@ -12,7 +12,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh'],
   rules: {
-    // 'no-console': 'error',
+    'no-console': 'error',
     curly: 'error',
     'import/prefer-default-export': 'off',
     'react/react-in-jsx-scope': 'off',

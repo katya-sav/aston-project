@@ -7,7 +7,6 @@ import { Form, Input, Text, Button } from '../../shared/ui';
 import styles from './register.module.css';
 
 export const Register = () => {
-  const test = useAuthUser();
   const { signUpUser } = useAuthUser();
   const navigate = useNavigate();
 
@@ -18,16 +17,12 @@ export const Register = () => {
     navigate(`/signin`, { replace: false });
   }, [navigate]);
 
-  const onSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    signUpUser(email, password);
-    console.log(test.authStatus);
-    navigate('/signin');
-  };
+  const handleSubmit = useCallback(() => {
+    signUpUser({ email, password });
+  }, [email, password, signUpUser]);
 
   return (
-    <Form title="Register" buttonName="Submit">
+    <Form title="Register" buttonName="Submit" onSubmit={handleSubmit}>
       <Input
         type="email"
         name="email"
@@ -46,12 +41,7 @@ export const Register = () => {
         label="Create password"
         onChange={(e) => setPassword(e.target.value)}
       ></Input>
-      <Button
-        onClick={onSubmit}
-        className={styles.button}
-        size="l"
-        weight={600}
-      >
+      <Button type="submit" className={styles.button} size="l" weight={600}>
         Submit
       </Button>
       <div className={styles.row}>

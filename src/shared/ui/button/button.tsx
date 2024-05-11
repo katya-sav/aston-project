@@ -12,11 +12,8 @@ export type Props = PropsWithChildren<
     icon?: FontAwesomeIconProps['icon'];
     outline?: boolean;
     className?: string;
-    onClick:
-      | React.MouseEventHandler<HTMLButtonElement>
-      | ((e: React.FormEvent<HTMLButtonElement>) => Promise<void>)
-      | undefined;
-    type?: 'submit' | 'reset' | 'button' | undefined;
+    type?: 'submit' | 'button';
+    onClick?: () => void;
   } & TextProps
 >;
 
@@ -25,7 +22,7 @@ export const Button = ({
   outline = true,
   className,
   onClick,
-  type,
+  type = 'button',
   children,
   ...textProps
 }: Props) => {

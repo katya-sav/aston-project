@@ -1,33 +1,66 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, type UnknownAction } from '@reduxjs/toolkit';
 
-import { AuthStatus, type User, AuthUserlice } from './types';
+import { getUser, signIn, signOut, signUp } from './thunks';
+import type { AuthUserSlice } from './types';
+import { AuthStatus } from './types';
 
-const initialState: AuthUserlice = {
-  user: { id: '', email: '' },
-  authStatus: AuthStatus.loading,
+const initialState: AuthUserSlice = {
+  user: null,
+  authStatus: AuthStatus.signedOut,
+  userChecked: false,
 };
 
 const authUserSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {
-    userSignedUp(state, action: PayloadAction<User>) {
-      state.user = action.payload;
-      state.authStatus = AuthStatus.signedUp;
-    },
-    userSignedIn(state, action: PayloadAction<User>) {
-      state.user = action.payload;
-      state.authStatus = AuthStatus.signedIn;
-    },
-    userSignedOut(state) {
-      state.user = initialState.user;
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getUser.fulfilled, (state, action) => {
+      const user = action.payload;
+      state.user = user;
+
+      state.authStatus = user ? AuthStatus.signedIn : AuthStatus.signedOut;
+      state.userChecked = true;
+    });
+
+    builder.addCase(signIn.fulfilled, (state, action) => {
+      const user = action.payload;
+      state.user = user;
+
+      state.authStatus = user ? AuthStatus.signedIn : AuthStatus.signedOut;
+    });
+
+    builder.addCase(signUp.fulfilled, (state, action) => {
+      const user = action.payload;
+      state.user = user;
+
+      state.authStatus = user ? AuthStatus.signedIn : AuthStatus.signedOut;
+    });
+
+    builder.addCase(signOut.fulfilled, (state) => {
+      state.user = null;
       state.authStatus = AuthStatus.signedOut;
-    },
+    });
+
+    builder.addMatcher(isAuthPending, (state) => {
+      state.authStatus = AuthStatus.loading;
+    });
   },
 });
 
-const { userSignedUp, userSignedIn, userSignedOut } = authUserSlice.actions;
+function isAuthPending(action: UnknownAction) {
+  return (
+    typeof action.type === 'string' &&
+    action.type.endsWith('/pending') &&
+    action.type.startsWith('auth/')
+  );
+}
 
-export const slice = { userSignedUp, userSignedIn, userSignedOut };
+export const authUserActions = {
+  signIn,
+  signUp,
+  signOut,
+  getUser,
+};
 
 export const authUserReducer = authUserSlice.reducer;

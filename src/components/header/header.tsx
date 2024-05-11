@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import {
   faRightToBracket,
@@ -15,9 +15,12 @@ import { SearchBar } from '../search-bar';
 import styles from './header.module.css';
 
 export const Header = () => {
-  const user = useAuthUser();
-  const { signOutUser } = useAuthUser();
+  const { signOutUser, authStatus, userChecked, getUser } = useAuthUser();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getUser();
+  }, [getUser]);
 
   const handleSearchSubmit = useCallback(
     (searchQuery: string) => {
@@ -41,13 +44,6 @@ export const Header = () => {
     navigate(`/signup`, { replace: false });
   }, [navigate]);
 
-  const handleLogout = () => {
-    signOutUser();
-    console.log(user.authStatus);
-
-    navigate('/signin');
-  };
-
   return (
     <div className={styles.header}>
       <div className={styles.left}>
@@ -63,9 +59,9 @@ export const Header = () => {
         <SearchBar onSubmit={handleSearchSubmit} />
       </div>
       <div className={styles.right}>
-        {user.authStatus === 'SignedIn' ? (
+        {!userChecked ? null : authStatus === 'SignedIn' ? (
           <>
-            <Button onClick={handleLogout} icon={faArrowLeft}>
+            <Button onClick={signOutUser} icon={faArrowLeft}>
               Logout
             </Button>
             <Button onClick={() => undefined} icon={faHeart}>

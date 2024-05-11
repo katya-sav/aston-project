@@ -26,8 +26,9 @@ export const firebaseApi = {
     await signOut(auth);
   },
 
-  async getUser(): Promise<User | null | undefined> {
+  async getUser(): Promise<User | null> {
     await auth.authStateReady();
+
     return auth.currentUser;
   },
 };
