@@ -4,9 +4,11 @@ import { Header } from './components/header';
 import { MainPage } from './pages/main-page';
 import { CardPage } from './pages/card-page';
 import { SearchPage } from './pages/search-page';
+import { FavoritesPage } from './pages/favorites-page';
 import { Login } from './components/login';
 import { Register } from './components/register';
 import { AuthRoute } from './pages/auth-route';
+import { ProtectedRoute } from './pages/protected-route';
 
 import './global-styles.css';
 
@@ -20,6 +22,10 @@ export const App = () => {
         <Route path="/search/:searchQuery/" element={<SearchPage />} />
         <Route path="/signin" element={<AuthRoute page={<Login />} />} />
         <Route path="/signup" element={<AuthRoute page={<Register />} />} />
+        <Route
+          path="/favorites"
+          element={<ProtectedRoute page={<FavoritesPage />} />}
+        />
       </Routes>
     </>
   );
