@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  width: 480px;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  background-color: var(--secondary-bg-color);
+}
+.title {
+  display: flex;
+  justify-content: center;
+}

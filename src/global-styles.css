@@ -12,6 +12,7 @@ body {
   --secondary-bg-color: #44426e;
   --tetriary-bg-color: #776483;
   --primary-color: #bbaab8;
+  --secondary-color: #292643;
 
   color: var(--primary-color);
   background-color: var(--primary-bg-color);
