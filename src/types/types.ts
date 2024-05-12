@@ -66,3 +66,8 @@ export type AnimeImages = {
   imageUrl: string | null;
   largeImageUrl: string | null;
 };
+
+export type Search = {
+  query: string;
+  id: string;
+};

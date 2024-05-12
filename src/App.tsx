@@ -5,6 +5,7 @@ import { MainPage } from './pages/main-page';
 import { CardPage } from './pages/card-page';
 import { SearchPage } from './pages/search-page';
 import { FavoritesPage } from './pages/favorites-page';
+import { HistoryPage } from './pages/history-page';
 import { Login } from './components/login';
 import { Register } from './components/register';
 import { AuthRoute } from './pages/auth-route';
@@ -25,6 +26,10 @@ export const App = () => {
         <Route
           path="/favorites"
           element={<ProtectedRoute page={<FavoritesPage />} />}
+        />
+        <Route
+          path="/history"
+          element={<ProtectedRoute page={<HistoryPage />} />}
         />
       </Routes>
     </>

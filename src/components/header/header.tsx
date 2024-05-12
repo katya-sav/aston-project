@@ -1,12 +1,12 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import {
   faRightToBracket,
   faHeart,
   faClockRotateLeft,
   faArrowLeft,
+  faUserPlus,
 } from '@fortawesome/free-solid-svg-icons';
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 import { useAuthUser } from '../../hooks';
 import { Button } from '../../shared/ui';
@@ -22,31 +22,32 @@ export const Header = () => {
     getUser();
   }, [getUser]);
 
-  const handleSearchSubmit = useCallback(
-    (searchQuery: string) => {
-      navigate({
-        pathname: `search/${searchQuery}`,
-        search: `?${createSearchParams({ page: '1' })}`,
-      });
-    },
-    [navigate],
-  );
+  const handleSearchSubmit = (searchQuery: string) => {
+    navigate({
+      pathname: `search/${searchQuery}`,
+      search: `?${createSearchParams({ page: '1' })}`,
+    });
+  };
 
-  const handleNavigate = useCallback(() => {
+  const handleNavigate = () => {
     navigate(`/`, { replace: false });
-  }, [navigate]);
+  };
 
-  const handleNavigateToLogin = useCallback(() => {
+  const handleNavigateToLogin = () => {
     navigate(`/signin`, { replace: false });
-  }, [navigate]);
+  };
 
-  const handleNavigateToRegister = useCallback(() => {
+  const handleNavigateToRegister = () => {
     navigate(`/signup`, { replace: false });
-  }, [navigate]);
+  };
 
-  const handleNavigateToFavorites = useCallback(() => {
+  const handleNavigateToFavorites = () => {
     navigate(`/favorites`, { replace: false });
-  }, [navigate]);
+  };
+
+  const handleNavigateToHistory = () => {
+    navigate(`/history`, { replace: false });
+  };
 
   return (
     <div className={styles.header}>
@@ -72,7 +73,7 @@ export const Header = () => {
               Favorites
             </Button>
 
-            <Button onClick={() => undefined} icon={faClockRotateLeft}>
+            <Button onClick={handleNavigateToHistory} icon={faClockRotateLeft}>
               History
             </Button>
           </>
