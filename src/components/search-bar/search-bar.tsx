@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { SuggestList } from '../suggest-list';
-import { useDebounce } from '../../hooks';
+import { useDebounce, useSearchHistory } from '../../hooks';
 import { useGetAnimeSearchQuery } from '../../api/anime-api';
 
 import styles from './search-bar.module.css';
@@ -15,6 +15,7 @@ export const SearchBar = ({ onSubmit }: Props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTerm, 1000);
   const navigate = useNavigate();
+  const { addToHistory } = useSearchHistory();
 
   const { data: anime } = useGetAnimeSearchQuery(
     {
@@ -27,7 +28,12 @@ export const SearchBar = ({ onSubmit }: Props) => {
   const handleFormSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    if (!searchTerm.trim()) {
+      return;
+    }
+
     onSubmit(searchTerm);
+    addToHistory(searchTerm);
     setSearchTerm('');
   };
 

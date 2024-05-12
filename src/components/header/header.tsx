@@ -5,8 +5,8 @@ import {
   faHeart,
   faClockRotateLeft,
   faArrowLeft,
+  faUserPlus,
 } from '@fortawesome/free-solid-svg-icons';
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 import { useAuthUser } from '../../hooks';
 import { Button } from '../../shared/ui';
@@ -48,6 +48,10 @@ export const Header = () => {
     navigate(`/favorites`, { replace: false });
   }, [navigate]);
 
+  const handleNavigateToHistory = useCallback(() => {
+    navigate(`/history`, { replace: false });
+  }, [navigate]);
+
   return (
     <div className={styles.header}>
       <div className={styles.left}>
@@ -72,7 +76,7 @@ export const Header = () => {
               Favorites
             </Button>
 
-            <Button onClick={() => undefined} icon={faClockRotateLeft}>
+            <Button onClick={handleNavigateToHistory} icon={faClockRotateLeft}>
               History
             </Button>
           </>

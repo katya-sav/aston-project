@@ -2,6 +2,7 @@ import { firebaseApi } from '../../../api/firebase-api';
 
 import { createThunk } from '../../create-thunk';
 import { favoritesActions } from '../favorites';
+import { historyActions } from '../history';
 import type { AuthPayload } from './types';
 
 export const getUser = createThunk('auth/getUser', async (_, { dispatch }) => {
@@ -12,6 +13,7 @@ export const getUser = createThunk('auth/getUser', async (_, { dispatch }) => {
   }
 
   dispatch(favoritesActions.getFavorites());
+  dispatch(historyActions.getHistory());
 
   return {
     id: user.uid,
@@ -29,6 +31,7 @@ export const signIn = createThunk(
     }
 
     dispatch(favoritesActions.getFavorites());
+    dispatch(historyActions.getHistory());
 
     return {
       id: user.uid,

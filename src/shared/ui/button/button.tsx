@@ -12,8 +12,10 @@ export type Props = PropsWithChildren<
     icon?: FontAwesomeIconProps['icon'];
     outline?: boolean;
     className?: string;
+    iconCn?: string;
     type?: 'submit' | 'button';
-    onClick?: () => void;
+    iconSize?: FontAwesomeIconProps['size'];
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   } & TextProps
 >;
 
@@ -21,6 +23,8 @@ export const Button = ({
   icon,
   outline = true,
   className,
+  iconCn,
+  iconSize,
   onClick,
   type = 'button',
   children,
@@ -33,7 +37,9 @@ export const Button = ({
       className={cn(styles.button, outline && styles.outline, className)}
     >
       <Text {...textProps}>{children}</Text>
-      {icon && <Icon icon={icon} className={styles.icon} />}
+      {icon && (
+        <Icon icon={icon} size={iconSize} className={cn(styles.icon, iconCn)} />
+      )}
     </button>
   );
 };
