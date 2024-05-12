@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import {
   faRightToBracket,
@@ -22,35 +22,32 @@ export const Header = () => {
     getUser();
   }, [getUser]);
 
-  const handleSearchSubmit = useCallback(
-    (searchQuery: string) => {
-      navigate({
-        pathname: `search/${searchQuery}`,
-        search: `?${createSearchParams({ page: '1' })}`,
-      });
-    },
-    [navigate],
-  );
+  const handleSearchSubmit = (searchQuery: string) => {
+    navigate({
+      pathname: `search/${searchQuery}`,
+      search: `?${createSearchParams({ page: '1' })}`,
+    });
+  };
 
-  const handleNavigate = useCallback(() => {
+  const handleNavigate = () => {
     navigate(`/`, { replace: false });
-  }, [navigate]);
+  };
 
-  const handleNavigateToLogin = useCallback(() => {
+  const handleNavigateToLogin = () => {
     navigate(`/signin`, { replace: false });
-  }, [navigate]);
+  };
 
-  const handleNavigateToRegister = useCallback(() => {
+  const handleNavigateToRegister = () => {
     navigate(`/signup`, { replace: false });
-  }, [navigate]);
+  };
 
-  const handleNavigateToFavorites = useCallback(() => {
+  const handleNavigateToFavorites = () => {
     navigate(`/favorites`, { replace: false });
-  }, [navigate]);
+  };
 
-  const handleNavigateToHistory = useCallback(() => {
+  const handleNavigateToHistory = () => {
     navigate(`/history`, { replace: false });
-  }, [navigate]);
+  };
 
   return (
     <div className={styles.header}>
