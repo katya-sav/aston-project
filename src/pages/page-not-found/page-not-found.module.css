@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 64px;
+}
+
+.image {
+  width: 50%;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.text {
+  margin-bottom: 24px;
+}

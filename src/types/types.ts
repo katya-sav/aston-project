@@ -71,3 +71,5 @@ export type Search = {
   query: string;
   id: string;
 };
+
+export type Theme = 'light' | 'dark';

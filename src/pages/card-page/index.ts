@@ -1,1 +1,1 @@
-export { CardPage } from './card-page';
+export { CardPage as default } from './card-page';
