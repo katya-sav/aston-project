@@ -1,9 +1,11 @@
 import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 import { SuggestList } from '../suggest-list';
 import { useDebounce, useSearchHistory } from '../../hooks';
 import { useGetAnimeSearchQuery } from '../../api/anime-api';
+import { Button } from '../../shared/ui';
 
 import styles from './search-bar.module.css';
 
@@ -12,6 +14,7 @@ type Props = {
 };
 
 export const SearchBar = ({ onSubmit }: Props) => {
+  const [focused, setFocused] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTerm, 1000);
   const navigate = useNavigate();
@@ -56,7 +59,14 @@ export const SearchBar = ({ onSubmit }: Props) => {
     [navigateToCard],
   );
 
-  const shouldShowSuggest = anime && debouncedSearchTerm;
+  const handleFocus = () => {
+    setFocused(true);
+  };
+  const handleBlur = () => {
+    setFocused(false);
+  };
+
+  const shouldShowSuggest = focused && anime && debouncedSearchTerm;
 
   return (
     <form onSubmit={handleFormSubmit} className={styles.form}>
@@ -65,7 +75,17 @@ export const SearchBar = ({ onSubmit }: Props) => {
         value={searchTerm}
         placeholder="Search anime"
         onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
       />
+      <Button
+        type="submit"
+        className={styles.button}
+        outline={false}
+        icon={faMagnifyingGlass}
+        iconSize="2xl"
+        iconCn={styles.icon}
+      ></Button>
       {shouldShowSuggest && (
         <SuggestList
           anime={anime.data.slice(0, 5)}

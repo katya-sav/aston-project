@@ -13,6 +13,10 @@ export type AuthUserSlice = {
   user: User | null;
   authStatus: AuthStatus;
   userChecked: boolean;
+  errors: {
+    signIn?: string;
+    signUp?: string;
+  };
 };
 
 export type AuthPayload = {

@@ -18,10 +18,10 @@ import {
   type CollectionReference,
 } from 'firebase/firestore';
 
-import { FirebaseConfig } from '../../../firebase-config';
-import type { Anime, Search } from '../../types';
+import { FIREBASE_CONFIG } from './firebase-config';
+import type { Anime, Search, FirebaseError } from '../../types';
 
-const app = initializeApp(FirebaseConfig);
+const app = initializeApp(FIREBASE_CONFIG);
 const auth = getAuth(app);
 
 const db = getFirestore(app);
@@ -36,11 +36,30 @@ type SearchHistory = Search & {
 
 export const firebaseApi = {
   async signUp(email: string, password: string): Promise<UserCredential> {
-    return await createUserWithEmailAndPassword(auth, email, password);
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
+
+      return result;
+    } catch (err) {
+      const error = err as FirebaseError;
+      const { code, message } = error.customData._tokenResponse.error;
+
+      throw { code, message };
+    }
   },
 
   async signIn(email: string, password: string): Promise<UserCredential> {
-    return await signInWithEmailAndPassword(auth, email, password);
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+
+      return result;
+    } catch (err) {
+      throw { code: 400, message: 'Wrong credentials' };
+    }
   },
 
   async signOut(): Promise<void> {

@@ -1,4 +1,4 @@
-import { ReactNode, useState, useEffect } from 'react';
+import { ReactNode, useState, useEffect, useMemo, useCallback } from 'react';
 
 import { ThemeContext } from './theme-context';
 import { themes } from './themes';
@@ -20,15 +20,23 @@ export const ThemeProvider = ({ children }: Props) => {
     setCSSVariables(themes[theme]);
   }, [theme]);
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     const nextTheme = theme === 'light' ? 'dark' : 'light';
 
     setTheme(nextTheme);
     localStorage.setItem(THEME_KEY, nextTheme);
-  };
+  }, [theme]);
+
+  const contextValue = useMemo(
+    () => ({
+      theme,
+      toggleTheme,
+    }),
+    [theme, toggleTheme],
+  );
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={contextValue}>
       {children}
     </ThemeContext.Provider>
   );

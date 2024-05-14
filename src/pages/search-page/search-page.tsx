@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 
 import { AnimeList } from '../../components/anime-list';
+import { SearchNotFound } from '../../components/search-not-found';
 import { useGetAnimeSearchQuery } from '../../api/anime-api';
 
 export const SearchPage = () => {
@@ -35,6 +36,10 @@ export const SearchPage = () => {
 
   if (!animeData) {
     return null;
+  }
+
+  if (animeData.data.length === 0) {
+    return <SearchNotFound searchQuery={searchQuery} />;
   }
 
   return (

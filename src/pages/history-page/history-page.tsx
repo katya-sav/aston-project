@@ -11,7 +11,7 @@ export const HistoryPage = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Text block className={styles.title} size="xl" weight={500}>
+      <Text block className={styles.title} size="xl" weight={600}>
         History
       </Text>
       {hasHistory ? (

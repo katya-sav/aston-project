@@ -5,6 +5,7 @@ import { FavoritesButton } from '../favorites-button';
 import { getValidateText } from '../../utils';
 import type { Anime } from '../../types';
 import { useFavorites } from '../../hooks';
+import { useUser } from '../../store/slices/auth-user';
 
 import styles from './anime-card.module.css';
 
@@ -27,6 +28,8 @@ export const AnimeCard = ({ anime }: Props) => {
 
   const { isFavorite, toggleFavoritesState } = useFavorites({ malId });
 
+  const user = useUser();
+
   const handleFavoriteClick = useCallback(() => {
     toggleFavoritesState(anime);
   }, [toggleFavoritesState, anime]);
@@ -35,10 +38,14 @@ export const AnimeCard = ({ anime }: Props) => {
     <div className={styles.wrapper}>
       <div className={styles.leftSide}>
         <img src={images.imageUrl ?? undefined} />
-        <FavoritesButton
-          isFavorite={isFavorite}
-          onClick={handleFavoriteClick}
-        />
+        {user ? (
+          <div className={styles.button}>
+            <FavoritesButton
+              isFavorite={isFavorite}
+              onClick={handleFavoriteClick}
+            />
+          </div>
+        ) : null}
       </div>
       <div>
         <Text block size="xl" weight={600}>

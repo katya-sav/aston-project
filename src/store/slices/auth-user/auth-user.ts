@@ -8,6 +8,7 @@ const initialState: AuthUserSlice = {
   user: null,
   authStatus: AuthStatus.signedOut,
   userChecked: false,
+  errors: {},
 };
 
 const authUserSlice = createSlice({
@@ -30,6 +31,10 @@ const authUserSlice = createSlice({
       state.authStatus = user ? AuthStatus.signedIn : AuthStatus.signedOut;
     });
 
+    builder.addCase(signIn.rejected, (state, action) => {
+      state.errors = { signIn: action.error.message };
+    });
+
     builder.addCase(signUp.fulfilled, (state, action) => {
       const user = action.payload;
       state.user = user;
@@ -37,9 +42,14 @@ const authUserSlice = createSlice({
       state.authStatus = user ? AuthStatus.signedIn : AuthStatus.signedOut;
     });
 
+    builder.addCase(signUp.rejected, (state, action) => {
+      state.errors = { signUp: action.error.message };
+    });
+
     builder.addCase(signOut.fulfilled, (state) => {
       state.user = null;
       state.authStatus = AuthStatus.signedOut;
+      state.errors = {};
     });
 
     builder.addMatcher(isAuthPending, (state) => {

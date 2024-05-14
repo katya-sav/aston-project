@@ -1,2 +1,2 @@
 export { favoritesReducer, favoritesActions } from './favorites';
-export { selectIsAnimeInFavorites } from './selectors';
+export { useFavoritesUser, useIsFavorites } from './hooks';

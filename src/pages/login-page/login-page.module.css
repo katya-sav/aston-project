@@ -15,3 +15,9 @@
   padding: 0;
   border: none;
 }
+
+.error {
+  display: flex;
+  height: 18px;
+  color: var(--error-color);
+}

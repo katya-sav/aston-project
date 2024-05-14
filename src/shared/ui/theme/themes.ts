@@ -5,6 +5,7 @@ export const themes = {
     'tetriary-bg-color': '#776483',
     'primary-color': '#bbaab8',
     'secondary-color': '#292643',
+    'error-color': '#CC3300',
   },
   light: {
     'primary-bg-color': '#ddd',
@@ -12,5 +13,6 @@ export const themes = {
     'tetriary-bg-color': '#aaa',
     'primary-color': '#222',
     'secondary-color': '#444',
+    'error-color': '#CC3300',
   },
 };

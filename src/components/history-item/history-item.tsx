@@ -1,17 +1,12 @@
+import PropTypes from 'prop-types';
 import { faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
 
 import { Text, Button } from '../../shared/ui';
 
 import styles from './history-item.module.css';
 
-type Props = {
-  value: string;
-  id: string;
-  onClick: (id: string) => void;
-  onDeleteClick: (id: string) => void;
-};
-
-export const HistoryItem = ({ id, value, onClick, onDeleteClick }: Props) => {
+// @ts-expect-error covered by prop types
+export const HistoryItem = ({ id, value, onClick, onDeleteClick }) => {
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
 
@@ -37,4 +32,11 @@ export const HistoryItem = ({ id, value, onClick, onDeleteClick }: Props) => {
       />
     </div>
   );
+};
+
+HistoryItem.propTypes = {
+  id: PropTypes.string,
+  value: PropTypes.string,
+  onClick: PropTypes.func,
+  onDeleteClick: PropTypes.func,
 };
