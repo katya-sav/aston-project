@@ -34,14 +34,20 @@ export const AnimeShow = ({ anime }: Props) => {
   return (
     <div className={styles.wrapper} onClick={handleNavigate}>
       <div className={styles.leftSide}>
-        <img src={images.imageUrl ?? undefined} alt={title} />
+        <img
+          className={styles.image}
+          src={images.imageUrl ?? undefined}
+          alt={title}
+        />
       </div>
       <div className={styles.rightSide}>
         <div>
-          <Text block size="xl" weight={500}>
+          <Text block size="xl" weight={500} className={styles.text}>
             {title}
           </Text>
-          <Text block>Year: {getValidateText(year)}</Text>
+          <Text block className={styles.text}>
+            Year: {getValidateText(year)}
+          </Text>
           <Text block>Sypopsis: {getValidateText(synopsis)}</Text>
         </div>
         {user ? (

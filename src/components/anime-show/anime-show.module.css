@@ -1,16 +1,43 @@
 .wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  padding-right: 8px;
+  justify-content: center;
   border: 2px solid var(--primary-color);
   border-radius: 4px;
   cursor: pointer;
 }
 
 .leftSide {
-  margin-right: 16px;
+  margin-right: 8px;
+  padding-top: 8px;
 }
 
 .rightSide {
   display: flex;
+  padding: 8px;
+}
+
+.text {
+  margin-bottom: 8px;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    flex-direction: row;
+    padding-right: 8px;
+  }
+
+  .leftSide {
+    margin-right: 16px;
+    padding: 0;
+  }
+
+  .rightSide {
+    display: flex;
+  }
+
+  .text {
+    margin-bottom: 16px;
+  }
 }

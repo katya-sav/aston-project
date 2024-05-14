@@ -38,17 +38,9 @@ export const AnimeCard = ({ anime }: Props) => {
     <div className={styles.wrapper}>
       <div className={styles.leftSide}>
         <img src={images.imageUrl ?? undefined} />
-        {user ? (
-          <div className={styles.button}>
-            <FavoritesButton
-              isFavorite={isFavorite}
-              onClick={handleFavoriteClick}
-            />
-          </div>
-        ) : null}
       </div>
       <div>
-        <Text block size="xl" weight={600}>
+        <Text block size="xl" weight={600} className={styles.title}>
           {title}
         </Text>
         <Text block>Sypopsis: {getValidateText(synopsis)}</Text>
@@ -62,6 +54,14 @@ export const AnimeCard = ({ anime }: Props) => {
           <Text block>Rating: {getValidateText(rating)}</Text>
           <Text block>Episodes: {getValidateText(episodes)}</Text>
         </div>
+        {user ? (
+          <div className={styles.button}>
+            <FavoritesButton
+              isFavorite={isFavorite}
+              onClick={handleFavoriteClick}
+            />
+          </div>
+        ) : null}
       </div>
     </div>
   );

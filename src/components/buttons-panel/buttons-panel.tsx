@@ -42,36 +42,53 @@ export const ButtonsPanel = () => {
   };
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <Button
         onClick={toggleTheme}
         icon={theme === 'light' ? faMoon : faSun}
         iconSize="xl"
         outline={false}
         className={styles.theme}
+        iconCn={styles.icon}
       ></Button>
       {!userChecked ? null : authStatus === 'SignedIn' ? (
         <>
-          <Button onClick={signOutUser} icon={faArrowLeft}>
+          <Button onClick={signOutUser} icon={faArrowLeft} iconCn={styles.icon}>
             Logout
           </Button>
-          <Button onClick={handleNavigateToFavorites} icon={faHeart}>
+          <Button
+            onClick={handleNavigateToFavorites}
+            icon={faHeart}
+            iconCn={styles.icon}
+          >
             Favorites
           </Button>
-          <Button onClick={handleNavigateToHistory} icon={faClockRotateLeft}>
+          <Button
+            onClick={handleNavigateToHistory}
+            icon={faClockRotateLeft}
+            iconCn={styles.icon}
+          >
             History
           </Button>
         </>
       ) : (
         <>
-          <Button onClick={handleNavigateToLogin} icon={faRightToBracket}>
+          <Button
+            onClick={handleNavigateToLogin}
+            icon={faRightToBracket}
+            iconCn={styles.icon}
+          >
             Login
           </Button>
-          <Button icon={faUserPlus} onClick={handleNavigateToRegister}>
+          <Button
+            icon={faUserPlus}
+            onClick={handleNavigateToRegister}
+            iconCn={styles.icon}
+          >
             Register
           </Button>
         </>
       )}
-    </>
+    </div>
   );
 };

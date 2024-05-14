@@ -3,6 +3,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 
 import { Icon } from '../../shared/ui';
+import styles from './favorites-button.module.css';
 
 //@ts-expect-error covered by prop types
 export const FavoritesButton = ({ isFavorite, onClick }) => {
@@ -12,8 +13,12 @@ export const FavoritesButton = ({ isFavorite, onClick }) => {
     onClick();
   };
   return (
-    <div onClick={handleClick}>
-      <Icon icon={isFavorite ? faHeartSolid : faHeart} size="xl" />
+    <div className={styles.wrapper} onClick={handleClick}>
+      <Icon
+        icon={isFavorite ? faHeartSolid : faHeart}
+        size="xl"
+        className={styles.icon}
+      />
     </div>
   );
 };

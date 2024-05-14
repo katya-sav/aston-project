@@ -21,8 +21,8 @@ import './global-styles.css';
 
 export const App = () => {
   return (
-    <Suspense fallback={<Loader />}>
-      <ThemeProvider>
+    <ThemeProvider>
+      <Suspense fallback={<Loader />}>
         <ErrorBoundary>
           <Header />
           <Routes>
@@ -48,7 +48,7 @@ export const App = () => {
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </ErrorBoundary>
-      </ThemeProvider>
-    </Suspense>
+      </Suspense>
+    </ThemeProvider>
   );
 };

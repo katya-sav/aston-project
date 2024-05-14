@@ -2,5 +2,11 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 62px;
+  top: 42px;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    top: 62px;
+  }
 }
