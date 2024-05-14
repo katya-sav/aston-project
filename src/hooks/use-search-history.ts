@@ -1,13 +1,12 @@
 import { useCallback } from 'react';
-import { useSelector } from 'react-redux';
 
-import { historyActions } from '../store/slices/history';
-import { useAppDispatch, type RootState } from '../store';
+import { historyActions, useHistory } from '../store/slices/history';
+import { useAppDispatch } from '../store';
 
 export const useSearchHistory = () => {
   const dispatch = useAppDispatch();
 
-  const history = useSelector((state: RootState) => state.history.history);
+  const history = useHistory();
 
   const addToHistory = useCallback(
     (query: string) => {

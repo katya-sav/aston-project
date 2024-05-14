@@ -1,24 +1,22 @@
 import { useCallback } from 'react';
-import { useSelector } from 'react-redux';
 
-import { useAppDispatch, type RootState } from '../store';
-
-import { authUserActions, type AuthPayload } from '../store/slices/auth-user';
+import { useAppDispatch } from '../store';
+import {
+  authUserActions,
+  useUser,
+  useAuthStatus,
+  useUserChecked,
+  useAuthErrors,
+  type AuthPayload,
+} from '../store/slices/auth-user';
 
 export const useAuthUser = () => {
   const dispatch = useAppDispatch();
 
-  const user = useSelector((state: RootState) => {
-    return state.user.user;
-  });
-
-  const authStatus = useSelector((state: RootState) => {
-    return state.user.authStatus;
-  });
-
-  const userChecked = useSelector((state: RootState) => {
-    return state.user.userChecked;
-  });
+  const user = useUser();
+  const authStatus = useAuthStatus();
+  const userChecked = useUserChecked();
+  const errors = useAuthErrors();
 
   const getUser = useCallback(() => {
     dispatch(authUserActions.getUser());
@@ -45,6 +43,7 @@ export const useAuthUser = () => {
   return {
     user,
     userChecked,
+    errors,
     getUser,
     authStatus,
     signUpUser,

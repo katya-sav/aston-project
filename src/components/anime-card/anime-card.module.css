@@ -21,3 +21,9 @@
 .info {
   margin-top: 16px;
 }
+
+.button {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}

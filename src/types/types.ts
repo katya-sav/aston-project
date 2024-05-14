@@ -73,3 +73,14 @@ export type Search = {
 };
 
 export type Theme = 'light' | 'dark';
+
+export type FirebaseError = {
+  customData: {
+    _tokenResponse: {
+      error: {
+        code: number;
+        message: string;
+      };
+    };
+  };
+};

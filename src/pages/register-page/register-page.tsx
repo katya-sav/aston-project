@@ -4,25 +4,25 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthUser } from '../../hooks';
 import { Form, Input, Text, Button } from '../../shared/ui';
 
-import styles from './login.module.css';
+import styles from './register-page.module.css';
 
-export const Login = () => {
-  const { signInUser } = useAuthUser();
+export const RegisterPage = () => {
+  const { errors, signUpUser } = useAuthUser();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleNavigateToRegister = useCallback(() => {
-    navigate(`/signup`, { replace: false });
+  const handleNavigateToLogin = useCallback(() => {
+    navigate(`/signin`, { replace: false });
   }, [navigate]);
 
   const handleSubmit = useCallback(() => {
-    signInUser({ email, password });
-  }, [email, password, signInUser]);
+    signUpUser({ email, password });
+  }, [email, password, signUpUser]);
 
   return (
-    <Form title="Login" buttonName="Submit" onSubmit={handleSubmit}>
+    <Form title="Register" buttonName="Submit" onSubmit={handleSubmit}>
       <Input
         type="email"
         name="email"
@@ -38,20 +38,23 @@ export const Login = () => {
         id="password"
         placeholder="Password"
         required
-        label="Enter password"
+        label="Create password"
         onChange={(e) => setPassword(e.target.value)}
       ></Input>
+      <Text weight={500} className={styles.error}>
+        {errors.signUp}
+      </Text>
       <Button type="submit" className={styles.button} size="l" weight={600}>
         Submit
       </Button>
       <div className={styles.row}>
-        <Text>You do not have an account?</Text>
+        <Text>Already registered?</Text>
         <Button
           weight={600}
           className={styles.link}
-          onClick={handleNavigateToRegister}
+          onClick={handleNavigateToLogin}
         >
-          Sign up
+          Sign in
         </Button>
       </div>
     </Form>

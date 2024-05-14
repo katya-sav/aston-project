@@ -1,7 +1,7 @@
 import { AnimeShow } from '../anime-show';
-
 import type { Anime } from '../../types';
 
+import { Text } from '../../shared/ui';
 import styles from './anime-list.module.css';
 
 type Props = {
@@ -12,7 +12,9 @@ type Props = {
 export const AnimeList = ({ anime, searchQuery }: Props) => {
   return (
     <div className={styles.list}>
-      <h1>{searchQuery}</h1>
+      <Text size="xxl" weight={600} className={styles.title}>
+        {searchQuery}
+      </Text>
       {anime.map((item) => (
         <AnimeShow key={item.malId} anime={item} />
       ))}

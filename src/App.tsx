@@ -11,11 +11,11 @@ const CardPage = lazy(() => import('./pages/card-page'));
 const SearchPage = lazy(() => import('./pages/search-page'));
 const FavoritesPage = lazy(() => import('./pages/favorites-page'));
 const HistoryPage = lazy(() => import('./pages/history-page'));
-const Login = lazy(() => import('./components/login'));
-const Register = lazy(() => import('./components/register'));
+const LoginPage = lazy(() => import('./pages/login-page'));
+const RegisterPage = lazy(() => import('./pages/register-page'));
 const PageNotFound = lazy(() => import('./pages/page-not-found'));
-const AuthRoute = lazy(() => import('./pages/auth-route'));
-const ProtectedRoute = lazy(() => import('./pages/protected-route'));
+const AuthRoute = lazy(() => import('./routes/auth-route'));
+const ProtectedRoute = lazy(() => import('./routes/protected-route'));
 
 import './global-styles.css';
 
@@ -29,8 +29,14 @@ export const App = () => {
             <Route path="/" element={<MainPage />} />
             <Route path="/card/:id" element={<CardPage />} />
             <Route path="/search/:searchQuery/" element={<SearchPage />} />
-            <Route path="/signin" element={<AuthRoute page={<Login />} />} />
-            <Route path="/signup" element={<AuthRoute page={<Register />} />} />
+            <Route
+              path="/signin"
+              element={<AuthRoute page={<LoginPage />} />}
+            />
+            <Route
+              path="/signup"
+              element={<AuthRoute page={<RegisterPage />} />}
+            />
             <Route
               path="/favorites"
               element={<ProtectedRoute page={<FavoritesPage />} />}

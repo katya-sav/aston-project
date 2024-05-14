@@ -4,6 +4,7 @@ import { animeApi } from '../api/anime-api';
 import { authUserReducer } from './slices/auth-user';
 import { favoritesReducer } from './slices/favorites';
 import { historyReducer } from './slices/history';
+import { listenerMiddleware } from './middleware';
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +14,9 @@ export const store = configureStore({
     [animeApi.reducerPath]: animeApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(animeApi.middleware),
+    getDefaultMiddleware()
+      .prepend(listenerMiddleware.middleware)
+      .concat(animeApi.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;

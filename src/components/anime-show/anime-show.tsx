@@ -7,6 +7,7 @@ import { FavoritesButton } from '../favorites-button';
 import { getValidateText } from '../../utils';
 import type { Anime } from '../../types';
 import { useFavorites } from '../../hooks';
+import { useUser } from '../../store/slices/auth-user';
 
 import styles from './anime-show.module.css';
 
@@ -19,6 +20,8 @@ export const AnimeShow = ({ anime }: Props) => {
   const navigate = useNavigate();
 
   const { isFavorite, toggleFavoritesState } = useFavorites({ malId });
+
+  const user = useUser();
 
   const handleNavigate = useCallback(() => {
     navigate(`/card/${malId}`, { replace: false });
@@ -41,10 +44,12 @@ export const AnimeShow = ({ anime }: Props) => {
           <Text block>Year: {getValidateText(year)}</Text>
           <Text block>Sypopsis: {getValidateText(synopsis)}</Text>
         </div>
-        <FavoritesButton
-          isFavorite={isFavorite}
-          onClick={handleFavoriteClick}
-        />
+        {user ? (
+          <FavoritesButton
+            isFavorite={isFavorite}
+            onClick={handleFavoriteClick}
+          />
+        ) : null}
       </div>
     </div>
   );

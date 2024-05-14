@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
-import { useSelector } from 'react-redux';
 
 import {
-  selectIsAnimeInFavorites,
   favoritesActions,
+  useFavoritesUser,
+  useIsFavorites,
 } from '../store/slices/favorites';
-import { useAppDispatch, type RootState } from '../store';
+import { useAppDispatch } from '../store';
 import type { Anime } from '../types';
 
 type Args = {
@@ -15,13 +15,9 @@ type Args = {
 export const useFavorites = ({ malId }: Args = {}) => {
   const dispatch = useAppDispatch();
 
-  const isFavorite = useSelector((state: RootState) =>
-    selectIsAnimeInFavorites(state, malId),
-  );
+  const isFavorite = useIsFavorites(malId);
 
-  const favorites = useSelector(
-    (state: RootState) => state.favorites.favorites,
-  );
+  const favorites = useFavoritesUser();
 
   const toggleFavoritesState = useCallback(
     (anime: Anime) => {
