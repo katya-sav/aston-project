@@ -8,7 +8,6 @@
 * Использовано API: [jikan](https://docs.api.jikan.moe/)
 * Ссылка на проект: [Anime](https://aston-anime.vercel.app/)
 
----
 
 ## Функциональность
 
@@ -17,11 +16,9 @@
 *   **Избранное: **  пользователи могут добавлять в аниме избранное
 *   **История поиска:** приложение дает пользователям доступ к истории поиска
 
-—-
 
 ##  Реализованные требования:
 
-—-
 
 ## 1 уровень (обязательный - необходимый минимум)
 
@@ -48,7 +45,6 @@
 - [x] Используется RTK Query: [animeApi](https://github.com/katya-sav/aston-project/blob/main/src/api/anime-api/anime-api.ts)
 - [x] Используется Transforming Responses: [animeApi](https://github.com/katya-sav/aston-project/blob/main/src/api/anime-api/anime-api.ts), [transformAnimeData](https://github.com/katya-sav/aston-project/blob/main/src/store/transform/transform-anime-data.ts)
 
-—
 
 ## 2 уровень (необязательный)
 
@@ -61,7 +57,6 @@
    - [x] Настроен CD: [Deploy Link](https://aston-anime.vercel.app/)
 - [x] Используются мемоизированные селекторы: [selectIsAnimeInFavorites](https://github.com/katya-sav/aston-project/blob/main/src/store/slices/favorites/selectors.ts), применение: [useIsFavorites](https://github.com/katya-sav/aston-project/blob/main/src/hooks/use-favorites.ts). selectIsAnimeInFavorites - мемоизированный селектор, созданный для проверки пришедших из состояния приложения аниме и его айдишника - если они уже существовали в состоянии, то заново не забираем их из состояния. Сделано со следующей целью  - определить данное аниме уже добавлено в избранное, или нет, и в зависимости от этого, дабавляем его в избранные, или удаляем из них
 
-—
 
 ## Дополнительная информация
 
