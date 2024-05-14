@@ -14,3 +14,7 @@
 .right {
   display: flex;
 }
+
+.theme {
+  margin-right: 8px;
+}

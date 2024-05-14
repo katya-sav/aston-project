@@ -6,15 +6,19 @@ import {
   faClockRotateLeft,
   faArrowLeft,
   faUserPlus,
+  faSun,
+  faMoon,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { useAuthUser } from '../../hooks';
+import { useTheme } from '../../shared/ui/theme';
 import { Button } from '../../shared/ui';
 import { SearchBar } from '../search-bar';
 
 import styles from './header.module.css';
 
 export const Header = () => {
+  const { theme, toggleTheme } = useTheme();
   const { signOutUser, authStatus, userChecked, getUser } = useAuthUser();
   const navigate = useNavigate();
 
@@ -64,6 +68,23 @@ export const Header = () => {
         <SearchBar onSubmit={handleSearchSubmit} />
       </div>
       <div className={styles.right}>
+        {theme === 'light' ? (
+          <Button
+            onClick={toggleTheme}
+            icon={faMoon}
+            iconSize="xl"
+            outline={false}
+            className={styles.theme}
+          ></Button>
+        ) : (
+          <Button
+            onClick={toggleTheme}
+            icon={faSun}
+            iconSize="xl"
+            outline={false}
+            className={styles.theme}
+          ></Button>
+        )}
         {!userChecked ? null : authStatus === 'SignedIn' ? (
           <>
             <Button onClick={signOutUser} icon={faArrowLeft}>
