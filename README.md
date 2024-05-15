@@ -24,7 +24,7 @@
 
 ## React
 
-- [x] Пишем функциональные компоненты c хуками в приоритете над классовыми
+- [x] Используются функциональные компоненты c хуками в приоритете над классовыми
 - [x] Есть разделение на умные и глупые компоненты: [Умный](https://github.com/katya-sav/aston-project/blob/main/src/components/search-bar/search-bar.tsx), [Глупый](https://github.com/katya-sav/aston-project/blob/main/src/components/suggest-item/suggest-item.tsx)
 - [x] Есть рендеринг списков: [AnimeList](https://github.com/katya-sav/aston-project/blob/main/src/components/anime-list/anime-list.tsx), [HystoryList](https://github.com/katya-sav/aston-project/blob/main/src/components/history-list/history-list.tsx)
 - [x] Реализована хотя бы одна форма: [LoginPage](https://github.com/katya-sav/aston-project/blob/main/src/pages/login-page/login-page.tsx)
@@ -52,7 +52,7 @@
     - [x] [Readme Status Badge](#status)
     - [x] Проверки Eslint, TS, build
   - [x] Настроен CD: [Deploy Link](https://aston-anime.vercel.app/)
-- [x] Используются мемоизированные селекторы: [selectIsAnimeInFavorites](https://github.com/katya-sav/aston-project/blob/main/src/store/slices/favorites/selectors.ts), применение: [useIsFavorites](https://github.com/katya-sav/aston-project/blob/main/src/hooks/use-favorites.ts).
+- [x] Используются мемоизированные селекторы: [selectIsAnimeInFavorites](https://github.com/katya-sav/aston-project/blob/main/src/store/slices/favorites/selectors.ts), применение:[useIsFavorites](https://github.com/katya-sav/aston-project/blob/main/src/hooks/use-favorites.ts).
 selectIsAnimeInFavorites - мемоизированный селектор, созданный для проверки, находится ли аниме в избранном. Если данные о списке аниме в сторе и id аниме не изменились, то селектор возвращает мемоизированное значение
 
 
