@@ -28,7 +28,7 @@
 - [x] Есть разделение на умные и глупые компоненты: [Умный](https://github.com/katya-sav/aston-project/blob/main/src/components/search-bar/search-bar.tsx), [Глупый](https://github.com/katya-sav/aston-project/blob/main/src/components/suggest-item/suggest-item.tsx)
 - [x] Есть рендеринг списков: [AnimeList](https://github.com/katya-sav/aston-project/blob/main/src/components/anime-list/anime-list.tsx), [HystoryList](https://github.com/katya-sav/aston-project/blob/main/src/components/history-list/history-list.tsx)
 - [x] Реализована хотя бы одна форма: [LoginPage](https://github.com/katya-sav/aston-project/blob/main/src/pages/login-page/login-page.tsx)
-- [x] Есть применение Контекст API: [ThemeContext](https://github.com/katya-sav/aston-project/blob/main/src/shared/ui/theme/theme-context.ts), [ThemeProvider]([https://github.com/katya-sav/aston-project/…](https://github.com/katya-sav/aston-project/blob/main/src/shared/ui/theme/theme-provider.tsx)%3E>)
+- [x] Есть применение Контекст API: [ThemeContext](https://github.com/katya-sav/aston-project/blob/main/src/shared/ui/theme/theme-context.ts), [ThemeProvider](https://github.com/katya-sav/aston-project/blob/main/src/shared/ui/theme/theme-provider.tsx)
 - [x] Есть применение предохранителя: [ErrorBoundary](https://github.com/katya-sav/aston-project/blob/main/src/components/error-boundary/error-boundary.tsx), [ErrorFallback](https://github.com/katya-sav/aston-project/blob/main/src/components/error-fallback/error-fallback.tsx)
 - [x] Есть хотя бы один кастомный хук: [useFavorites](https://github.com/katya-sav/aston-project/blob/main/src/hooks/use-favorites.ts)
 - [x] Хотя бы несколько компонентов используют PropTypes: [FavoritesButton](https://github.com/katya-sav/aston-project/blob/main/src/components/favorites-button/favorites-button.tsx), [HistoryItem](https://github.com/katya-sav/aston-project/blob/main/src/components/history-item/history-item.tsx)
@@ -52,7 +52,8 @@
     - [x] [Readme Status Badge](#status)
     - [x] Проверки Eslint, TS, build
   - [x] Настроен CD: [Deploy Link](https://aston-anime.vercel.app/)
-- [x] Используются мемоизированные селекторы: [selectIsAnimeInFavorites](https://github.com/katya-sav/aston-project/blob/main/src/store/slices/favorites/selectors.ts), применение: [useIsFavorites](https://github.com/katya-sav/aston-project/blob/main/src/hooks/use-favorites.ts). selectIsAnimeInFavorites - мемоизированный селектор, созданный для проверки пришедших из состояния приложения  данных - аниме и его айдишника. Если эти данные уже существовали в состоянии, то заново не забираем их. Сделано со следующей целью - определить добавлено ли в избранное это аниме, или нет, и в зависимости от этого, дабавляем его в избранные, или удаляем из них
+- [x] Используются мемоизированные селекторы: [selectIsAnimeInFavorites](https://github.com/katya-sav/aston-project/blob/main/src/store/slices/favorites/selectors.ts), применение: [useIsFavorites](https://github.com/katya-sav/aston-project/blob/main/src/hooks/use-favorites.ts).
+selectIsAnimeInFavorites - мемоизированный селектор, созданный для проверки, находится ли аниме в избранном. Если данные о списке аниме в сторе и id аниме не изменились, то селектор возвращает мемоизированное значение
 
 
 ## Дополнительная информация
