@@ -7,7 +7,12 @@ type TSearchNotFoundProps = {
 };
 
 export const SearchNotFound = ({ searchQuery }: TSearchNotFoundProps) => (
-  <Text className={styles.text} size="xl" weight={500}>
-    No results for &quot;{searchQuery}&quot;. Please try again
-  </Text>
+  <div className={styles.wrapper}>
+    <Text size="xl" weight={500}>
+      No results for &quot;{searchQuery}&quot;
+    </Text>
+    <Text className={styles.text} size="l" weight={500}>
+      Please try again
+    </Text>
+  </div>
 );

@@ -1,5 +1,4 @@
 import { firebaseApi } from '../../../api/firebase-api';
-import { resetApiState } from '../../../api/anime-api';
 
 import { createThunk } from '../../create-thunk';
 import { favoritesActions } from '../favorites';
@@ -62,6 +61,4 @@ export const signOut = createThunk('auth/signOut', async (_, { dispatch }) => {
 
   dispatch(historyActions.reset());
   dispatch(favoritesActions.reset());
-  dispatch(resetApiState());
-  window.location.reload();
 });

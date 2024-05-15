@@ -16,7 +16,6 @@ export const useFavorites = ({ malId }: Args = {}) => {
   const dispatch = useAppDispatch();
 
   const isFavorite = useIsFavorites(malId);
-
   const favorites = useFavoritesUser();
 
   const toggleFavoritesState = useCallback(
