@@ -18,11 +18,12 @@
 .image {
   display: flex;
   flex: 1;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .rightSide {
   display: flex;
+  flex: 1;
   padding: 8px;
 }
 
@@ -39,10 +40,6 @@
   .leftSide {
     margin-right: 16px;
     padding: 0;
-  }
-
-  .rightSide {
-    display: flex;
   }
 
   .text {

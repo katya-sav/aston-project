@@ -14,9 +14,10 @@ type Props = {
 };
 
 export const SearchBar = ({ onSubmit }: Props) => {
-  const [focused, setFocused] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [focused, setFocused] = useState(false);
   const debouncedSearchTerm = useDebounce(searchTerm, 1000);
+  const debouncedFocused = useDebounce(focused, 100);
   const navigate = useNavigate();
   const { addToHistory } = useSearchHistory();
 
@@ -62,11 +63,12 @@ export const SearchBar = ({ onSubmit }: Props) => {
   const handleFocus = () => {
     setFocused(true);
   };
+
   const handleBlur = () => {
     setFocused(false);
   };
 
-  const shouldShowSuggest = focused && anime && debouncedSearchTerm;
+  const shouldShowSuggest = anime && debouncedSearchTerm && debouncedFocused;
 
   return (
     <form onSubmit={handleFormSubmit} className={styles.form}>
