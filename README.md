@@ -52,7 +52,7 @@
     - [x] [Readme Status Badge](#status)
     - [x] Проверки Eslint, TS, build
   - [x] Настроен CD: [Deploy Link](https://aston-anime.vercel.app/)
-- [x] Используются мемоизированные селекторы: [selectIsAnimeInFavorites](https://github.com/katya-sav/aston-project/blob/main/src/store/slices/favorites/selectors.ts), применение:[useIsFavorites](https://github.com/katya-sav/aston-project/blob/main/src/hooks/use-favorites.ts).
+- [x] Используется мемоизированный селектор: [selectIsAnimeInFavorites](https://github.com/katya-sav/aston-project/blob/main/src/store/slices/favorites/selectors.ts), [useIsFavorites](https://github.com/katya-sav/aston-project/blob/main/src/store/slices/favorites/hooks.ts), применение: [useFavorites](https://github.com/katya-sav/aston-project/blob/main/src/hooks/use-favorites.ts).
 selectIsAnimeInFavorites - мемоизированный селектор, созданный для проверки, находится ли аниме в избранном. Если данные о списке аниме в сторе и id аниме не изменились, то селектор возвращает мемоизированное значение
 
 
