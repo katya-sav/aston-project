@@ -9,8 +9,16 @@
 }
 
 .leftSide {
+  display: flex;
   margin-right: 8px;
   padding-top: 8px;
+  min-width: 225px;
+}
+
+.image {
+  display: flex;
+  flex: 1;
+  object-fit: cover;
 }
 
 .rightSide {

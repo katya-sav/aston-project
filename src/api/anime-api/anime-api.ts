@@ -77,5 +77,4 @@ export const {
   useGetAnimeListQuery,
   useGetAnimeCardQuery,
   useGetAnimeSearchQuery,
-  util: { resetApiState },
 } = animeApi;
